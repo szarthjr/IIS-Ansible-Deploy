@@ -25,29 +25,29 @@ obs1: pode ser utilizado outro virtualizador que possua integração com o Vagra
 
 ### Configuracao do Vagrant
 
-1. Criada uma VagrantBox específica (instruções de criação [aqui](./vargrant_box/README.md)) para realizar a simulação das máquinas cliente, a imagem pode ser encontrada aqui [zarthjr/windows10IISAnsible](https://app.vagrantup.com/zarthjr/boxes/windows10IISAnsible/)
-1. Criado de arquivo Vagrant ([./vagrant/Vagrantfile]((./vagrant/Vagrantfile))) para simulação da infraestrutura com 10 VM's windows, onde cada VM representa um cliente
+1. Criada uma VagrantBox específica (instruções de criação [aqui](vargrant_box/README.md)) para realizar a simulação das máquinas cliente, a imagem pode ser encontrada aqui [zarthjr/windows10IISAnsible](https://app.vagrantup.com/zarthjr/boxes/windows10IISAnsible/)
+1. Criado de arquivo Vagrant ([vagrant/Vagrantfile](vagrant/Vagrantfile)) para simulação da infraestrutura com 10 VM's windows, onde cada VM representa um cliente
    1. O arquivo Vagrant foi montado supondo-se que o site será/está publicado na porta 8080
    1. Foi definida um ip específico para cada VM criada
 
 ### Configuracao do Ansible
 
-1. Criado o arquivo de [hosts](./ansible/hosts) e o [ansible.cfg](./ansible/ansible.cfg)
+1. Criado o arquivo de [hosts](ansible/hosts/) e o [ansible.cfg](ansible/ansible.cfg)
 1. Criada a role (deploy-iis-site) para criação/atualização do site
 
 ## Como rodar este projeto e resultados esperados
 
-1. Entre na pasta [./vagrant](./vagrant/). Esta pasta contêm o arquivo [Vagrantfile](./vagrant/Vagrantfile) que será utilizado na simulação das 10 VM's do cliente.
+1. Entre na pasta [vagrant](vagrant/). Esta pasta contêm o arquivo [Vagrantfile](vagrant/Vagrantfile) que será utilizado na simulação das 10 VM's do cliente.
    1. Caso seja necessário, pode-se diminuir o número de VM's criadas para tornar o processo mais rápido.
       Para reduzir o número de VM's criadas basta alterar o número no loop ```(2..11).each do |i|```
-      Este range especificado será o último número do ip das VM's que serão criadas, caso seja alterado este range também deverá ser alterado o arquivo de [hosts](./ansible/hosts) do ansible
+      Este range especificado será o último número do ip das VM's que serão criadas, caso seja alterado este range também deverá ser alterado o arquivo de [hosts](ansible/hosts) do ansible
 1. Nesta pasta execute o comando abaixo e aguarde as VM's serem inicializadas (este processo pode ser longo):
 
     ```bash
     vagrant up
     ```
 
-1. Após a finalização do ```vagrant up``` acesse a pasta []./ansible](./ansible). Esta pasta contêm o [playbook.yml](./ansible/playbook.yml) e as demais configurações do ansible.
+1. Após a finalização do ```vagrant up``` acesse a pasta [ansible](ansible/). Esta pasta contêm o [playbook.yml](ansible/playbook.yml) e as demais configurações do ansible.
 1. Execute o comando abaixo para testar as configurações:
 
     ```bash
