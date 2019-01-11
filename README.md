@@ -25,7 +25,7 @@ obs1: pode ser utilizado outro virtualizador que possua integração com o Vagra
 
 ### Configuracao do Vagrant
 
-1. Criada uma VagrantBox específica (instruções de criação [aqui](vargrant_box/README.md)) para realizar a simulação das máquinas cliente, a imagem pode ser encontrada aqui [zarthjr/windows10IISAnsible](https://app.vagrantup.com/zarthjr/boxes/windows10IISAnsible/)
+1. Criada uma VagrantBox específica (instruções de criação [aqui](vagrant_box)) para realizar a simulação das máquinas cliente, a imagem pode ser encontrada aqui [zarthjr/windows10IISAnsible](https://app.vagrantup.com/zarthjr/boxes/windows10IISAnsible/)
 1. Criado de arquivo Vagrant ([vagrant/Vagrantfile](vagrant/Vagrantfile)) para simulação da infraestrutura com 10 VM's windows, onde cada VM representa um cliente
    1. O arquivo Vagrant foi montado supondo-se que o site será/está publicado na porta 8080
    1. Foi definida um ip específico para cada VM criada
