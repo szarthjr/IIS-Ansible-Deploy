@@ -1,0 +1,12 @@
+#Cria 10 vms do ubuntu trusty para rodar o tutorial
+Vagrant.configure("2") do |config|
+  (2..12).each do |i|
+    config.vm.define "client-#{i}" do |client|
+      client.vm.box = "zarthjr/windows10IISAnsible"
+      client.vm.hostname = "client-#{i}"
+      client.vm.network :private_network, ip: "10.0.1.#{i}"
+      client.vm.communicator = "winrm"
+      client.vm.guest = "windows"
+    end
+  end
+end

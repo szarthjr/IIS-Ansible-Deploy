@@ -1,0 +1,4 @@
+---
+- hosts: win
+  roles:
+    - deploy-iis-site

@@ -1,0 +1,27 @@
+---
+- name: Cria diretório do site
+  win_file: 
+    path: "{{ site_path }}"
+    state: directory
+    
+- name: Cria WebSite
+  win_iis_website:
+      name: "Questao 1"
+      state: started
+      port: 8080
+      physical_path: "{{ site_path }}"
+
+- name: Abre a porta no firewall
+  win_firewall_rule:
+    name: questao_1_8080
+    enable: yes
+    state: present
+    localport: 8080
+    action: Allow
+    direction: In
+    protocol: Tcp
+
+- name: Deploy do arquivo do site
+  win_copy:
+    src: ./files/index.html
+    dest: "{{ site_path }}/index.html"
